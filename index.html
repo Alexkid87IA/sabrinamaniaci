@@ -3438,6 +3438,9 @@ var translations = {
   en: {
     '.hero-headline': 'Your rights,<br>your music.',
     '.hero-tagline': 'Independent legal consultant specializing in legal support for artists, creators and creative entrepreneurs. Contract drafting, review, audit, contractual strategy.',
+    '.btn-primary span': 'Book a meeting',
+    '.btn-primary small': 'Free',
+    '.btn-ghost span': 'Discover my services',
     '.nav-link[href="#services"]': 'Services',
     '.nav-link[href="#pour-qui"]': 'For whom',
     '.nav-link[href="#process"]': 'Process',
@@ -3535,6 +3538,29 @@ var translations = {
   }
 };
 var frBackup = {};
+var tickerEN = {
+  'Rédaction de contrats': 'Contract drafting',
+  'Droit de la musique': 'Music law',
+  'Artistes & Créateurs': 'Artists & Creators',
+  'Propriété intellectuelle': 'Intellectual property',
+  'Contrats d\'artiste': 'Artist contracts',
+  'Conseil juridique': 'Legal counsel',
+  'Négociation': 'Negotiation',
+  'Droits d\'auteur': 'Copyright',
+  'Labels & Producteurs': 'Labels & Producers',
+  'Distribution': 'Distribution',
+  'Contrats de licence': 'License agreements',
+  'Sabrina Maniaci': 'Sabrina Maniaci',
+  'Contrats de management': 'Management contracts',
+  'SACEM & SPRD': 'SACEM & SPRD',
+  'Sécurisation des œuvres': 'Work protection',
+  'Musique & Entertainment': 'Music & Entertainment',
+  'Sur mesure': 'Tailor-made',
+  'Veille juridique': 'Legal monitoring',
+  'Auteurs-compositeurs': 'Songwriters',
+  'Consultation': 'Consultation'
+};
+var tickerFRBackup = {};
 
 function toggleLang() {
   if (currentLang === 'fr') {
@@ -3546,6 +3572,11 @@ function toggleLang() {
         el.innerHTML = translations.en[sel];
       });
     });
+    document.querySelectorAll('.ticker-item').forEach(function(el) {
+      var txt = el.textContent.trim();
+      if (!tickerFRBackup[txt]) tickerFRBackup[txt] = el.innerHTML;
+      if (tickerEN[txt]) el.innerHTML = tickerEN[txt];
+    });
     currentLang = 'en';
     document.documentElement.lang = 'en';
   } else {
@@ -3555,6 +3586,12 @@ function toggleLang() {
       var sel = parts.join('_');
       var els = document.querySelectorAll(sel);
       if (els[idx]) els[idx].innerHTML = frBackup[key];
+    });
+    document.querySelectorAll('.ticker-item').forEach(function(el) {
+      var txt = el.textContent.trim();
+      Object.keys(tickerFRBackup).forEach(function(fr) {
+        if (tickerEN[fr] === txt) el.innerHTML = fr;
+      });
     });
     currentLang = 'fr';
     document.documentElement.lang = 'fr';
