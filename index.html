@@ -1718,16 +1718,23 @@ img { max-width: 100%; height: auto; }
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
+  width: 56px;
   flex-shrink: 0;
   z-index: 2;
-  color: var(--maniaci);
-  font-size: 28px;
-  animation: pulseArrow 2s ease-in-out infinite;
 }
-@keyframes pulseArrow {
-  0%, 100% { opacity: 0.4; transform: translateX(0); }
-  50% { opacity: 1; transform: translateX(4px); }
+.process-flow-arrow svg {
+  width: 32px;
+  height: 32px;
+  animation: pulseArrowRight 2.4s ease-in-out infinite;
+}
+.process-flow-arrow:nth-of-type(2) svg { animation-delay: 0.4s; }
+@keyframes pulseArrowRight {
+  0%, 100% { opacity: 0.3; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(6px); }
+}
+@keyframes pulseArrowDown {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(6px); }
 }
 .process-card-icon {
   width: 48px;
@@ -2662,7 +2669,8 @@ img { max-width: 100%; height: auto; }
   .process-headline { font-size: clamp(32px, 7vw, 48px); }
   .process-subtitle { font-size: var(--fs-base); }
   .process-flow { flex-direction: column; gap: 0; max-width: 440px; margin: 0 auto 48px; }
-  .process-flow-arrow { transform: rotate(90deg); width: 100%; height: 32px; }
+  .process-flow-arrow { width: 100%; height: 48px; transform: rotate(90deg); }
+  .process-flow-arrow svg { width: 28px; height: 28px; }
   .process-grid { grid-template-columns: 1fr; gap: 16px; max-width: 440px; margin: 0 auto; }
   .process-card { padding: 24px 20px 20px; }
   .process-card-title { font-size: var(--fs-xl); }
@@ -3151,7 +3159,7 @@ img { max-width: 100%; height: auto; }
           <div class="process-card-desc">On &eacute;change sur votre situation, vos besoins et vos objectifs. Premier rendez-vous gratuit, sans engagement.</div>
         </div>
       </div>
-      <div class="process-flow-arrow reveal" style="animation-delay:.2s">&#10132;</div>
+      <div class="process-flow-arrow reveal" style="animation-delay:.2s"><svg viewBox="0 0 32 32" fill="none"><path d="M6 16h18M18 9l7 7-7 7" stroke="#7C3AED" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <div class="process-flow-card">
         <div class="process-card --active reveal" style="animation-delay:.3s">
           <div class="process-card-icon">&#9998;</div>
@@ -3161,7 +3169,7 @@ img { max-width: 100%; height: auto; }
           <div class="process-card-desc">J'analyse votre situation, r&eacute;dige ou relis vos contrats, rep&egrave;re les clauses dangereuses et vous propose des solutions claires.</div>
         </div>
       </div>
-      <div class="process-flow-arrow reveal" style="animation-delay:.4s">&#10132;</div>
+      <div class="process-flow-arrow reveal" style="animation-delay:.4s"><svg viewBox="0 0 32 32" fill="none"><path d="M6 16h18M18 9l7 7-7 7" stroke="#7C3AED" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <div class="process-flow-card">
         <div class="process-card reveal" style="animation-delay:.5s">
           <div class="process-card-icon">&#9989;</div>
